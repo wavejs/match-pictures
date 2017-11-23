@@ -1,0 +1,42 @@
+{
+  "name": "match-pictures",
+  "version": "0.0.1",
+  "description": "Look carefully and find them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "webpack -d --config ./webpack/webpack.base.js",
+    "build:prod": "webpack -p --config ./webpack/webpack.base.js",
+    "dev": "webpack-dev-server --hot --inline --env development --config ./webpack/webpack.base.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wavejs/match-pictures.git"
+  },
+  "keywords": [
+    "game",
+    "couple"
+  ],
+  "author": "foundy,dalgos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wavejs/match-pictures/issues"
+  },
+  "homepage": "https://github.com/wavejs/match-pictures#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.11.0",
+    "jsx-loader": "^0.13.2",
+    "path": "^0.12.7",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-hot-loader": "^3.1.3",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "dependencies": {}
+}
