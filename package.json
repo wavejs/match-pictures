@@ -1,0 +1,36 @@
+{
+  "name": "match-pictures",
+  "version": "0.0.1",
+  "description": "Look carefully and pick them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalgos/match-pictures.git"
+  },
+  "keywords": [
+    "game",
+    "javascript",
+    "frontend"
+  ],
+  "author": {
+    "name": "wavejs contributors",
+    "url": "https://github.com/wavejs"
+  },
+  "contributors": [
+    "foundy <foundy@foundy.io>",
+    "dalgos <dalgos@dalgos.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dalgos/match-pictures/issues"
+  },
+  "homepage": "https://github.com/dalgos/match-pictures#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "eslint-plugin-react": "^7.5.1"
+  }
+}
