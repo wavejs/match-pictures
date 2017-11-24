@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    react: './react'
+    bundle: './index.js'
   },
   output: {
     path: path.join(__dirname, './dist'),
@@ -22,5 +22,15 @@ module.exports = {
         loader: 'babel-loader'
       }
     ]
+  },
+  devtool: 'source-map',
+  devServer: {
+    contentBase: [
+      path.join(__dirname, './')
+    ],
+    compress: false,
+    port: 6060,
+    watchContentBase: true,
+    hot: true
   }
 };

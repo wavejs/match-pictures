@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 const rootElement = document.querySelector('#app');
 
 const App = () => {
-  return <div>TEST</div>
+  return <div>Look carefully and pick them</div>
 }
 
-ReactDOM.append(<App/>, rootElement);
+ReactDOM.render(<App/>, rootElement);

@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# react-project
+react/node_modules

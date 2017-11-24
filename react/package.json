@@ -1,22 +1,20 @@
 {
-  "name": "match-pictures",
+  "name": "match-pictures-react",
   "version": "0.0.1",
   "description": "Look carefully and find them",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "webpack -d --config ./webpack/webpack.base.js",
-    "build:prod": "webpack -p --config ./webpack/webpack.base.js",
-    "dev": "webpack-dev-server --hot --inline --env development --config ./webpack/webpack.base.js"
+    "build:dev": "webpack -d",
+    "build:prod": "webpack -p",
+    "dev":
+      "webpack-dev-server --hot --inline --env development"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wavejs/match-pictures.git"
   },
-  "keywords": [
-    "game",
-    "couple"
-  ],
+  "keywords": ["game", "couple"],
   "author": "foundy,dalgos",
   "license": "MIT",
   "bugs": {
