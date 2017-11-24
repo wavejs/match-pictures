@@ -30,6 +30,9 @@
   "homepage": "https://github.com/dalgos/match-pictures#readme",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "@babel/preset-react": "^7.0.0-beta.32",
     "babel-eslint": "^8.0.2",
     "eslint-plugin-react": "^7.5.1"
   }
