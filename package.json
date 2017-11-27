@@ -29,15 +29,14 @@
     "url": "https://github.com/dalgos/match-pictures/issues"
   },
   "homepage": "https://github.com/dalgos/match-pictures#readme",
-  "dependencies": {
-    "babel-loader": "^8.0.0-beta.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.32",
     "@babel/preset-env": "^7.0.0-beta.32",
     "@babel/preset-react": "^7.0.0-beta.32",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
+    "babel-loader": "^8.0.0-beta.0",
     "eslint": "^4.12.0",
     "eslint-plugin-react": "^7.5.1",
     "react": "^16.1.1",
