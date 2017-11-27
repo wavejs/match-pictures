@@ -4,7 +4,8 @@
   "description": "Look carefully and pick them",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-server:react": "webpack-dev-server --watch --config ./react/webpack.config.js --hot"
   },
   "repository": {
     "type": "git",
@@ -28,12 +29,20 @@
     "url": "https://github.com/dalgos/match-pictures/issues"
   },
   "homepage": "https://github.com/dalgos/match-pictures#readme",
-  "dependencies": {},
+  "dependencies": {
+    "babel-loader": "^8.0.0-beta.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.32",
     "@babel/preset-env": "^7.0.0-beta.32",
     "@babel/preset-react": "^7.0.0-beta.32",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint": "^4.12.0",
+    "eslint-plugin-react": "^7.5.1",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   }
 }
