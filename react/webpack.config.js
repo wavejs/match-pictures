@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    bundle: path.join(__dirname, './index.js')
+    bundle: path.join(__dirname, './app/index.js')
   },
   output: {
     path: path.join(__dirname, './dist'),
@@ -14,7 +14,7 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
-        loader: ['jsx-loader', 'react-hot-loader', 'babel-loader']
+        loader: 'babel-loader'
       },
       {
         test: /\.js$/,
@@ -22,6 +22,10 @@ module.exports = {
         loader: 'babel-loader'
       }
     ]
+  },
+  resolve: {
+    modules: ['app', 'node_modules'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   devtool: 'source-map',
   devServer: {
