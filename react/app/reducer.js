@@ -18,8 +18,36 @@ const configInitState = {
 };
 const config = (state = configInitState) => state;
 
+const blocksInitState = [
+  {
+    value: 'a',
+    isActivated: false,
+    display: 'A',
+  },
+  {
+    value: 'a',
+    isActivated: false,
+    display: 'A',
+  }
+];
+const blocks = (state = blocksInitState, { type, idx }) => {
+  switch (type) {
+    case 'ACTIVATE_BLOCK':
+      const prevState = state[idx];
+
+      return [
+        ...state.splice(0, idx),
+        Object.assign({}, prevState, { isActivated: !prevState.isActivated }),
+        ...state.splice(idx + 1)
+      ];
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   config,
   blockCount,
   answerStatus,
+  blocks,
 });

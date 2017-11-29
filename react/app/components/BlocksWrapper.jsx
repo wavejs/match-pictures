@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import Block from './Block';
 
@@ -22,30 +23,8 @@ class BlocksWrapper extends React.Component {
     };
     this.blockActivateHandler = this.blockActivateHandler.bind(this);
   }
-  blockActivateHandler(val) {
-
-    this.setState(prevState => {
-      if (prevState.activatedBlocksIdx.length < 2) {
-        if (prevState.activatedBlocksIdx.indexOf(val) > -1) {
-          return { activatedBlocksIdx: prevState.activatedBlocksIdx.filter(prev => prev !== val) };
-        } else {
-          return { activatedBlocksIdx: [...prevState.activatedBlocksIdx, val] };
-        }
-      }
-    }, () => {
-      if (this.state.activatedBlocksIdx.length === 2) {
-        this.state.activatedBlocksIdx.reduce((prev, curr) => {
-          if (prev === curr) {
-            this.props.confirmAnswers('correct');
-          } else {
-            this.props.confirmAnswers('wrong');
-          }
-        });
-        setTimeout(() => {
-          this.setState({ activatedBlocksIdx: [] }, () => this.props.resetAnswers());
-        }, 1000);
-      }
-    });
+  blockActivateHandler(id) {
+    this.props.activateBlock(id);
   }
 
   render() {
@@ -53,7 +32,18 @@ class BlocksWrapper extends React.Component {
 
     return (
       <Wrapper width={width}>
-        <Block
+        {this.props.blocks.map((data, idx) =>
+          <Block
+            key={idx}
+            size={Math.floor(width / this.props.col)}
+            id={idx}
+            display={data.display}
+            value={data.value}
+            onActivate={this.blockActivateHandler}
+            isActivated={data.isActivated}
+          />
+        )}
+        {/* <Block
           size={Math.floor(width / this.props.col)}
           id="1"
           value="a"
@@ -66,7 +56,7 @@ class BlocksWrapper extends React.Component {
           value="b"
           onActivate={this.blockActivateHandler}
           isActivated={activatedBlocksIdx.indexOf('b') > -1}
-        />
+        /> */}
       </Wrapper>
     );
   }
@@ -77,14 +67,24 @@ BlocksWrapper.defaultProps = {
   col: 4,
   row: 3,
 };
+BlocksWrapper.propTypes = {
+  blocks: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string,
+  })),
+};
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  blocks: state.blocks,
+});
 const mapDispatchToProps = dispatch => ({
   confirmAnswers(status) {
     dispatch({ type: 'CONFIRM_ANSWERS', status });
   },
   resetAnswers() {
     dispatch({ type: 'RESET_ANSWERS' });
+  },
+  activateBlock(idx) {
+    dispatch({ type: 'ACTIVATE_BLOCK', idx });
   }
 });
 
