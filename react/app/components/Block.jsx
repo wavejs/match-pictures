@@ -4,7 +4,7 @@ import Styled from 'styled-components';
 const Elem = Styled.div`
   width: ${({size}) => size}px;
   height: ${({size}) => size}px;
-  background-color: ${({ isChecked }) => isChecked ? '#417df4' : '#f44242'};
+  background-color: ${({ isActivated }) => isActivated ? '#417df4' : '#f44242'};
   visibility: ${({ isCleared }) => isCleared ? 'hidden' : 'visible'};
   display: inline-block;
   float: left;
@@ -25,19 +25,17 @@ const Text = Styled.div`
 class Block extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isChecked: false,
-    };
+
     this.blockClickHandler = this.blockClickHandler.bind(this);
   }
   blockClickHandler() {
-    this.setState(prevState => ({ isChecked: !prevState.isChecked }), () => this.props.onActivate(this.props.value));
+    this.props.onActivate(this.props.value);
   }
   render() {
     return (
       <Elem
         size={this.props.size}
-        isChecked={this.state.isChecked}
+        isActivated={this.props.isActivated}
         onClick={this.blockClickHandler}
         isCleared={this.props.isCleared}
       >
@@ -50,6 +48,7 @@ class Block extends React.Component {
 
 Block.defaultProps = {
   isCleared: false,
+  isActivated: false,
   value: 0,
   onActivate: () => {},
 };

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Styled from 'styled-components';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 
 import { initStore } from './store';
 
 import AppWrapper from './components/AppWrapper';
 import Header from './components/Header';
 import BlocksWrapper from './components/BlocksWrapper';
+import Indicator from './components/Indicator';
 
 const rootElement = document.querySelector('#app');
 const store = initStore();
@@ -21,6 +21,7 @@ const App = () => {
           homeUrl="/"
         />
         <BlocksWrapper/>
+        <Indicator/>
       </AppWrapper>
     </Provider>
   );
