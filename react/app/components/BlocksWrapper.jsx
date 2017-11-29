@@ -14,6 +14,11 @@ width: ${({ width }) => width || '600'}px;
 
 const BlocksWrapper = props => {
   const width = 600;
+  const activatedBlocksIdx = [];
+
+  const blockActivateHandler = (...args) => {
+    console.log(args);
+  };
 
   return (
     <Wrapper width={width}>
@@ -21,11 +26,13 @@ const BlocksWrapper = props => {
         size={Math.floor(width / props.col)}
         id="1"
         value="a"
+        onActivate={blockActivateHandler}
       />
       <Block
         size={Math.floor(width / props.col)}
         id="2"
         value="b"
+        onActivate={blockActivateHandler}
       />
     </Wrapper>
   );

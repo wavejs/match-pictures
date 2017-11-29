@@ -31,7 +31,7 @@ class Block extends React.Component {
     this.blockClickHandler = this.blockClickHandler.bind(this);
   }
   blockClickHandler() {
-    this.setState(prevState => ({ isChecked: !prevState.isChecked }), () => this.props.onChoice(this.props.id));
+    this.setState(prevState => ({ isChecked: !prevState.isChecked }), () => this.props.onActivate(this.props.value));
   }
   render() {
     return (
@@ -51,7 +51,7 @@ class Block extends React.Component {
 Block.defaultProps = {
   isCleared: false,
   value: 0,
-  onChoice: () => {},
+  onActivate: () => {},
 };
 
 export default Block;
