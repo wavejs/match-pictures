@@ -4,7 +4,7 @@ import Styled from 'styled-components';
 import Block from './Block';
 
 const Wrapper = Styled.div`
-width: 600px;
+width: ${({ width }) => width || '600'}px;
 &:after {
   content: ' ';
   clear: both;
@@ -13,20 +13,28 @@ width: 600px;
 `;
 
 const BlocksWrapper = props => {
-  const arr = [];
-
-  arr.length = props.blockCount;
+  const width = 600;
 
   return (
-    <Wrapper>
-      {/* {React.Children.toArray(props.children)} */}
-      {arr.map((item, idx) => <Block key={idx} size={600 / props.blockCount}/>)}
+    <Wrapper width={width}>
+      <Block
+        size={Math.floor(width / props.col)}
+        id="1"
+        value="a"
+      />
+      <Block
+        size={Math.floor(width / props.col)}
+        id="2"
+        value="b"
+      />
     </Wrapper>
   );
 };
 
 BlocksWrapper.defaultProps = {
   blockCount: 12,
+  col: 4,
+  row: 3,
 };
 
 export default BlocksWrapper;
