@@ -1,12 +1,10 @@
-# match-pictures
+# match-pictures : ReactJS version.
 
 > Look carefully and pick them
 
 This is a matching photo finding game.
 
 ## Test
-
-### ReactJS version
 
 ```bash
 npm install

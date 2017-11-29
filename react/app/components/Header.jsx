@@ -9,4 +9,9 @@ const Header = props => {
   );
 };
 
+Header.propTypes = {
+  homeUrl: PropTypes.string,
+  title: PropTypes.string,
+};
+
 export default Header;
