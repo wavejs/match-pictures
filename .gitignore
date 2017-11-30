@@ -59,3 +59,6 @@ typings/
 
 # react-project
 react/node_modules
+
+# Manage CNAME separately
+CNAME
