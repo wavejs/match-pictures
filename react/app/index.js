@@ -7,7 +7,6 @@ import { initStore } from './store';
 import AppWrapper from './components/AppWrapper';
 import Header from './components/Header';
 import BlocksWrapper from './components/BlocksWrapper';
-import Indicator from './components/Indicator';
 
 const rootElement = document.querySelector('#app');
 const store = initStore();
@@ -20,8 +19,9 @@ const App = () => {
           title="Match Pictures"
           homeUrl="/"
         />
+
         <BlocksWrapper/>
-        <Indicator/>
+
       </AppWrapper>
     </Provider>
   );

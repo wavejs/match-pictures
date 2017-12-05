@@ -19,72 +19,69 @@ class BlocksWrapper extends React.Component {
     super(props);
     this.state = {
       width: 600,
-      activatedBlocksIdx: [],
+      activatedBlocks: [],
+      isDisplayText: true
     };
     this.blockActivateHandler = this.blockActivateHandler.bind(this);
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isDisplayText: false });
+    }, 2000);
   }
   blockActivateHandler(id) {
     this.props.activateBlock(id);
   }
 
   render() {
-    const { width, activatedBlocksIdx } = this.state;
+    const { width, isDisplayText } = this.state;
 
     return (
+      this.props.isStart &&
       <Wrapper width={width}>
-        {this.props.blocks.map((data, idx) =>
+        {this.props.blocks.map(({ id, value, isActivated, display, isCleared }, idx) => (
           <Block
             key={idx}
             size={Math.floor(width / this.props.col)}
-            id={idx}
-            display={data.display}
-            value={data.value}
+            id={id}
+            display={isDisplayText || isActivated ? display : ''}
+            value={value}
             onActivate={this.blockActivateHandler}
-            isActivated={data.isActivated}
+            isActivated={isActivated}
+            isCleared={isCleared}
           />
-        )}
-        {/* <Block
-          size={Math.floor(width / this.props.col)}
-          id="1"
-          value="a"
-          onActivate={this.blockActivateHandler}
-          isActivated={activatedBlocksIdx.indexOf('a') > -1}
-        />
-        <Block
-          size={Math.floor(width / this.props.col)}
-          id="2"
-          value="b"
-          onActivate={this.blockActivateHandler}
-          isActivated={activatedBlocksIdx.indexOf('b') > -1}
-        /> */}
+        ))}
       </Wrapper>
     );
   }
-};
+}
 
 BlocksWrapper.defaultProps = {
   blockCount: 12,
   col: 4,
-  row: 3,
+  row: 3
 };
 BlocksWrapper.propTypes = {
-  blocks: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string,
-  })),
+  blocks: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string
+    })
+  )
 };
 
 const mapStateToProps = state => ({
   blocks: state.blocks,
+  isStart: state.isStart,
 });
 const mapDispatchToProps = dispatch => ({
-  confirmAnswers(status) {
-    dispatch({ type: 'CONFIRM_ANSWERS', status });
-  },
   resetAnswers() {
     dispatch({ type: 'RESET_ANSWERS' });
   },
-  activateBlock(idx) {
-    dispatch({ type: 'ACTIVATE_BLOCK', idx });
+  activateBlock(id) {
+    dispatch({ type: 'ACTIVATE_BLOCK', id });
+  },
+  checkAnswer() {
+    dispatch({ type: 'CHECK_ANSWER' });
   }
 });
 

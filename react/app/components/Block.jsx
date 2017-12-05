@@ -9,6 +9,7 @@ const Elem = Styled.div`
   display: inline-block;
   float: left;
   color: #ffffff;
+  border: 1px solid #ffffff;
 `;
 
 const Text = Styled.div`
