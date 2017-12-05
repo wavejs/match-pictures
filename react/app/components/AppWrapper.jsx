@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Styled from 'styled-components';
 
-const AppWrapper = Styled.div`
+import ReadyCountdown from './ReadyCountdown';
+import Indicator from './Indicator';
+
+const App = Styled.div`
   background-color: #${({ answerStatus }) => {
     switch (answerStatus) {
       case 'neutral':
@@ -19,8 +22,26 @@ const AppWrapper = Styled.div`
   color: #ffffff;
 `;
 
+class AppWrapper extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <App>
+        {React.Children.toArray(this.props.children)}
+
+        {!this.props.isStart && <ReadyCountdown />}
+
+        <Indicator/>
+      </App>
+    );
+  }
+}
+
 const mapStateToDispatch = state => ({
   answerStatus: state.answerStatus,
+  isStart: state.isStart
 });
 
 export default connect(mapStateToDispatch)(AppWrapper);

@@ -9,6 +9,7 @@ const Elem = Styled.div`
   display: inline-block;
   float: left;
   color: #ffffff;
+  border: 1px solid #ffffff;
 `;
 
 const Text = Styled.div`
@@ -29,7 +30,7 @@ class Block extends React.Component {
     this.blockClickHandler = this.blockClickHandler.bind(this);
   }
   blockClickHandler() {
-    this.props.onActivate(this.props.value);
+    this.props.onActivate(this.props.id);
   }
   render() {
     return (
@@ -40,7 +41,7 @@ class Block extends React.Component {
         isCleared={this.props.isCleared}
       >
         <Text>
-          {this.props.id}
+          {this.props.display}
         </Text>
       </Elem>);
   }
@@ -49,6 +50,7 @@ class Block extends React.Component {
 Block.defaultProps = {
   isCleared: false,
   isActivated: false,
+  display: null,
   value: 0,
   onActivate: () => {},
 };

@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Styled from 'styled-components';
 
+import { activatedBlocksSelector, answerSelector, restBlocksSelector } from '../selectors';
+
 const Wrapper = Styled.div`
   position: fixed;
-  display: ${({ isDisplay }) => isDisplay ? 'block' : 'none'};
+  display: block;
   top: 0;
   left: 0;
   width: 100%;
@@ -32,14 +34,48 @@ const Wrapper = Styled.div`
   }
 `;
 
+class Indicator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayText: ''
+    };
+  }
+  componentWillReceiveProps({ activatedBlocks, isCorrect }) {
+    activatedBlocks.length === 2 && setTimeout(() => this.props.resetAnswers(isCorrect), 3000);
+  }
 
-const Indicator = props =>
-  <Wrapper isDisplay={props.answerStatus !== 'neutral'}>
-    <span>{props.answerStatus.toUpperCase()}</span>
-  </Wrapper>;
+  render() {
+    const { activatedBlocks, isCorrect } = this.props;
+
+    return (
+      (activatedBlocks.length === 2 || this.props.restBlocks.length === 0) &&
+      <Wrapper>
+        {this.props.restBlocks.length > 0 ?
+          <span>{isCorrect ? 'CORRECT!' : 'WRONG!'}</span>
+          :
+          <span>Clear!!</span>
+        }
+      </Wrapper>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   answerStatus: state.answerStatus,
+  blocks: state.blocks,
+  activatedBlocks: activatedBlocksSelector(state),
+  isCorrect: answerSelector(state),
+  restBlocks: restBlocksSelector(state),
 });
 
-export default connect(mapStateToProps)(Indicator);
+const mapDispatchToProps = dispatch => ({
+  confirmAnswers(status) {
+    dispatch({ type: 'CONFIRM_ANSWERS', status });
+  },
+  resetAnswers(status) {
+    dispatch({ type: 'RESET_ANSWERS', status });
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Indicator);
